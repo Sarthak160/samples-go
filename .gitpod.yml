@@ -1,9 +1,9 @@
 tasks:
   - name: keploy-server
     before: |
-      git clone https://github.com/keploy/keploy.git && cd keploy
-    init: |
-      docker-compose up 
+      git clone https://github.com/keploy/keploy.git && cd keploy && docker-compose up
+    # init: |
+    #   docker-compose up 
     # command: rm -r keploy
 
   - name: gin-mongo
