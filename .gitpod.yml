@@ -1,7 +1,7 @@
 tasks:
   - name: keploy-server
     before: |
-      git clone https://github.com/keploy/keploy.git && cd keploy
+      cd /tmp && git clone https://github.com/keploy/keploy.git && cd keploy
     init: |
       docker-compose up
 
