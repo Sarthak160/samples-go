@@ -14,7 +14,7 @@ tasks:
       gp open ../GITPOD.md && go run handler.go main.go
 
   - name: user terminal
-    init: cd echo-sql && sudo chmod -R 755  postgres-data/ && echo "quickly try out keploy using the instructions above!"
+    init: cd echo-sql && echo "quickly try out keploy using the instructions above!"
     # command: echo 'Lets get started !'
     
 ports:
