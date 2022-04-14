@@ -11,7 +11,7 @@ tasks:
     init: |
       docker-compose up -d
     command: |
-      gp open GITPOD.md && go run handler.go main.go
+      gp open ../GITPOD.md && go run handler.go main.go
 
   - name: user terminal
     init: sudo chmod -R 755  postgres-data/ && echo "quickly try out keploy using the instructions above!"
