@@ -4,18 +4,17 @@ package main
 import (
 	"database/sql"
 
-	// tom: for Initialize
 	"context"
 	"fmt"
 	"log"
-	// tom: for route handlers
+
 	"encoding/json"
 	"net/http"
 	"os"
 	"strconv"
 
 	"github.com/jackc/pgx/v5"
-	// tom: go get required
+
 	"github.com/gorilla/mux"
 )
 
