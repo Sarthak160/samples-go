@@ -39,7 +39,7 @@ func (a *App) Initialize(user, password, dbname string) error {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
 		os.Exit(1)
 	}
-	defer a.DB.Close(context.Background())
+	
 	a.Router = mux.NewRouter()
 
 	// tom: this line is added after initializeRoutes is created later on

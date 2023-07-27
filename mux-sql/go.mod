@@ -2,9 +2,13 @@ module test-app-product-catelog
 
 go 1.17
 
+replace github.com/jackc/pgx/v5 v5.4.2 => /home/ubuntu/sarthak/pgx
+
 require (
 	github.com/gorilla/mux v1.8.0
 	github.com/jackc/pgx/v5 v5.4.2
+
+// github.com/jackc/pgx/v5 v5.4.2
 )
 
 require (
