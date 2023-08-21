@@ -9,7 +9,7 @@ func main() {
 	a := &App{}
 	err := a.Initialize(
 		"postgres",
-		"postgres",
+		"password",
 		"postgres")
 
 	if err != nil {
