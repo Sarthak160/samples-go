@@ -4,25 +4,23 @@ package main
 import (
 	"database/sql"
 
-	// tom: for Initialize
+	"context"
 	"fmt"
 	"log"
 
-	// tom: for route handlers
 	"encoding/json"
 	"net/http"
+	"os"
 	"strconv"
 
-	"github.com/keploy/go-sdk/integrations/ksql/v2"
+	"github.com/jackc/pgx/v5"
 
-	// tom: go get required
 	"github.com/gorilla/mux"
-	"github.com/lib/pq"
 )
 
 type App struct {
 	Router *mux.Router
-	DB     *sql.DB
+	DB     *pgx.Conn
 }
 
 // tom: initial function is empty, it's filled afterwards
@@ -35,16 +33,13 @@ func (a *App) Initialize(user, password, dbname string) error {
 		"password=%s dbname=%s sslmode=disable",
 		"localhost", "5438", user, password, dbname)
 	// connectionString := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", user, password, dbname)
-	driver := ksql.Driver{Driver: pq.Driver{}}
-
-	sql.Register("keploy", &driver)
-
 	var err error
-	a.DB, err = sql.Open("keploy", connectionString)
+	a.DB, err = pgx.Connect(context.Background(), connectionString)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
+		os.Exit(1)
 	}
-
+	
 	a.Router = mux.NewRouter()
 
 	// tom: this line is added after initializeRoutes is created later on
